@@ -1,18 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import Navbar from '../components/Navbar';
 import Card from '../components/Card';
-
-const Header = styled.header`
-  background: url('https://via.placeholder.com/1920x300') center/cover no-repeat;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-`;
+import amassandoPao from '@/assets/imgs/amassando-pao.jpg';
+import balcao from '@/assets/imgs/balcao.jpg';
+import balcao2 from '@/assets/imgs/balcao2.jpg';
+import boloMorango from '@/assets/imgs/bolo-morango.jpg';
+import paoAcucar from '@/assets/imgs/pao-acucar.jpg';
+import paoAssado from '@/assets/imgs/pao-assado.jpg';
+import torta from '@/assets/imgs/torta.jpg';
+import Header from '../components/HeaderComponent';
 
 const Grid = styled.section`
   display: grid;
@@ -32,13 +28,43 @@ const Footer = styled.footer`
 const Home: React.FC = () => {
   return (
     <>
-      <Navbar />
-      <Header>Bem-vindo à nossa padaria!</Header>
+      <Header />
       <Grid>
-        <Card title="Pão Francês" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-        <Card title="Croissant" text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris." />
-        <Card title="Bolo de Cenoura" text="Duis aute irure dolor in reprehenderit in voluptate velit esse." />
-        <Card title="Torta de Maçã" text="Excepteur sint occaecat cupidatat non proident, sunt in culpa." />
+        <Card 
+          title="Amassando o Pão" 
+          text="O segredo de um pão perfeito começa aqui." 
+          image={amassandoPao} 
+        />
+        <Card 
+          title="Nosso Balcão" 
+          text="Sempre repleto de delícias para você." 
+          image={balcao} 
+        />
+        <Card 
+          title="Bolo de Morango" 
+          text="Frescor e sabor em cada fatia." 
+          image={boloMorango} 
+        />
+        <Card 
+          title="Pão de Açúcar" 
+          text="Tradicional e cheio de sabor." 
+          image={paoAcucar} 
+        />
+        <Card 
+          title="Pão Assado" 
+          text="Saindo do forno, quentinho pra você." 
+          image={paoAssado} 
+        />
+        <Card 
+          title="Torta Especial" 
+          text="Delícia artesanal com um toque especial." 
+          image={torta} 
+        />
+        <Card 
+          title="Balcão Elegante" 
+          text="Seu lugar de escolha para momentos doces." 
+          image={balcao2} 
+        />
       </Grid>
       <Footer>© 2025 Padaria - Todos os direitos reservados.</Footer>
     </>
