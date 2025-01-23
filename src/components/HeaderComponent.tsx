@@ -12,6 +12,7 @@ const HeaderStyled = styled.header`
   font-size: 2rem;
   font-weight: bold;
   overflow: hidden;
+  z-index: 1;
 `;
 
 const Overlay = styled.div`
@@ -27,6 +28,7 @@ const Overlay = styled.div`
 const HeaderContent = styled.div`
   position: relative;
   z-index: 2; /* Para garantir que o texto fique acima do overlay */
+  text-align: center;
 `;
 
 const Header: React.FC = () => (
