@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi'; // Ícones do react-icons
-import logo from '@/assets/imgs/logo.png';
+import logo from '@/assets/imgs/logo-padaria.jpg';
 
 const NavbarContainer = styled.nav`
-  background-color: #333;
+  background-color: #373737;
   color: #fff;
-  padding: 1rem 1rem;
+  padding: 1rem 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,16 +25,23 @@ const LogoContainer = styled.div`
 const Logo = styled.div`
   display: flex;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Formato circular */
+  overflow: hidden;
+  background-color: #fff;
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta a imagem dentro do container */
   }
 `;
 
 const Title = styled.span`
   font-size: 1.5rem;
+  margin-left: 10px;
   font-weight: bold;
   color: #fff;
 `;

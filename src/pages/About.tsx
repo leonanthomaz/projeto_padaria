@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import aboutImage from '@/assets/imgs/balcao.jpg'; // Imagem ilustrativa para o About
+import aboutImage from '@/assets/imgs/balcao.jpg';
+import homemPao from '@/assets/imgs/homem-pao.png';
+import quadroIdeia from '@/assets/imgs/quadro-ideia.png';
+import latasLixoReciclaveis from '@/assets/imgs/trash.png';
 
 const AboutContainer = styled.div`
   padding: 2rem;
@@ -12,7 +15,7 @@ const Title = styled.h1`
   font-size: 2.5rem;
   color: #333;
   margin-bottom: 1rem;
-  text-align: left; /* Agora o título ficará alinhado à esquerda */
+  text-align: left;
 `;
 
 const AboutImage = styled.div`
@@ -31,19 +34,55 @@ const Paragraph = styled.p`
   margin-bottom: 1.5rem;
 `;
 
+const InitiativesContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+`;
+
+const Initiative = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`;
+
+const InitiativeIcon = styled.img`
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+`;
+
+const InitiativeText = styled.p`
+  font-size: 1rem;
+  color: #555;
+`;
+
 const About: React.FC = () => {
   return (
     <AboutContainer>
-      <Title>Sobre a Padaria Senac</Title>
-      <AboutImage /> {/* Imagem ilustrativa */}
+      <Title>Sobre a Pão te Kero</Title>
+      <AboutImage />
       <Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vestibulum justo sit amet nulla eleifend, a gravida orci auctor. Integer feugiat, purus eu aliquam convallis, nisi metus congue sapien, non tempus purus arcu nec libero. Proin sagittis consequat nisi, ac vulputate justo dictum eget. Curabitur cursus eros at risus cursus, id tincidunt lorem iaculis.
+        Na "Pão te Kero", estamos comprometidos em fazer mais do que apenas fornecer pães frescos e deliciosos. Queremos contribuir para a nossa comunidade de maneira significativa. Conheça algumas de nossas iniciativas:
       </Paragraph>
+      <InitiativesContainer>
+        <Initiative>
+          <InitiativeIcon src={homemPao} alt="Oficinas de Educação" />
+          <InitiativeText>Oficinas de Educação</InitiativeText>
+        </Initiative>
+        <Initiative>
+          <InitiativeIcon src={quadroIdeia} alt="Brinquedos Recicláveis" />
+          <InitiativeText>Brinquedos com Materiais Recicláveis</InitiativeText>
+        </Initiative>
+        <Initiative>
+          <InitiativeIcon src={latasLixoReciclaveis} alt="Pegue e Leve" />
+          <InitiativeText>Pegue e Leve</InitiativeText>
+        </Initiative>
+      </InitiativesContainer>
       <Paragraph>
-        Aliquam erat volutpat. Curabitur at magna nisl. Nam efficitur ligula a felis sodales sollicitudin. Nulla facilisi. Integer vulputate risus vel sapien hendrerit, sit amet congue orci bibendum. Nulla facilisi. Aenean volutpat vehicula lectus et auctor.
-      </Paragraph>
-      <Paragraph>
-        Duis euismod velit et erat pharetra, ac tincidunt nisi vehicula. Etiam et velit a odio posuere tempus in eu eros. In eget odio magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed euismod lectus ut neque placerat, in auctor nisi cursus.
+        Venha visitar a "Pão te Kero" e descubra como podemos fazer a diferença juntos.
       </Paragraph>
     </AboutContainer>
   );
