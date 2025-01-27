@@ -5,6 +5,8 @@ const ContactContainer = styled.div`
   padding: 2rem;
   max-width: 600px;
   margin: 0 auto;
+  margin-top: 85px;
+
 `;
 
 const Title = styled.h1`

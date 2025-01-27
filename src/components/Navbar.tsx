@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi'; // Ícones do react-icons
-import logo from '@/assets/imgs/logo-padaria.jpg';
+import logoTransparent from '@/assets/imgs/logo-padaria-trans.png';
 
 const NavbarContainer = styled.nav`
-  background-color: #373737;
+  background-color: rgba(55, 55, 55, 0.8);
   color: #fff;
   padding: 1rem 1.2rem;
   display: flex;
@@ -13,13 +13,18 @@ const NavbarContainer = styled.nav`
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid #444;
-  position: relative;
-  z-index: 2;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  
 `;
 
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  
 `;
 
 const Logo = styled.div`
@@ -28,14 +33,12 @@ const Logo = styled.div`
   justify-content: center;
   width: 60px;
   height: 60px;
-  border-radius: 50%; /* Formato circular */
   overflow: hidden;
-  background-color: #fff;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ajusta a imagem dentro do container */
+    object-fit: contain;
   }
 `;
 
@@ -43,7 +46,7 @@ const Title = styled.span`
   font-size: 1.5rem;
   margin-left: 10px;
   font-weight: bold;
-  color: #fff;
+  color: #ffcc00; /* Letras douradas para combinar com a logo */
 `;
 
 const MenuToggle = styled.div`
@@ -58,7 +61,6 @@ const MenuToggle = styled.div`
   }
 `;
 
-
 const NavLinks = styled.div<{ isOpen: boolean }>`
   display: flex;
   gap: 2rem;
@@ -67,7 +69,7 @@ const NavLinks = styled.div<{ isOpen: boolean }>`
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0;
+    top: 94px;
     right: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
     height: 100vh;
     width: 250px;
@@ -75,7 +77,8 @@ const NavLinks = styled.div<{ isOpen: boolean }>`
     padding: 2rem;
     transition: right 0.3s ease-in-out;
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-    margin-top: 84px;
+    z-index: 999; /* Garante que o menu estará acima de outros elementos */
+
   }
 `;
 
@@ -106,9 +109,9 @@ const Navbar: React.FC = () => {
     <NavbarContainer>
       <LogoContainer>
         <Logo>
-          <img src={logo} alt="Logo da Padaria" />
+          <img src={logoTransparent} alt="Logo da Padaria" />
         </Logo>
-        <Title>Padaria Senac</Title>
+        <Title>Pão te Kero</Title>
       </LogoContainer>
       <MenuToggle onClick={toggleMenu}>
         {menuOpen ? <FiX /> : <FiMenu />}
