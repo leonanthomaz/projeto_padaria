@@ -1,20 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import aboutImage from '@/assets/imgs/balcao.jpg';
+import Card from '../components/Card';
+import Footer from '../components/Footer'; // Importando o Footer separado
+import woman from '@/assets/imgs/woman-160281_1280.png';
+import workshop from '@/assets/imgs/ai-generated-9340329_1280.png';
+import recycling from '@/assets/imgs/recycling-160925_1280.png';
 
 const AboutContainer = styled.div`
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
-  margin-top: 85px;
-
+  margin-top: 70px;
 `;
 
 const Title = styled.h1`
   font-size: 2.5rem;
   color: #333;
   margin-bottom: 1rem;
+  text-align: center;
 `;
 
 const AboutImage = styled.div`
@@ -34,55 +39,57 @@ const Subtitle = styled.h2`
   font-size: 2rem;
   color: #444;
   margin-bottom: 1rem;
+  text-align: center;
 `;
 
 const Paragraph = styled.p`
   font-size: 1rem;
   color: #555;
   line-height: 1.6;
+  text-align: justify;
 `;
 
-const List = styled.ul`
-  margin: 1rem 0;
-  padding-left: 1.5rem;
-  list-style: disc;
-  color: #555;
-`;
-
-const Footer = styled.footer`
-  background-color: #f8f9fa;
-  padding: 1.5rem 0;
+const CardGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
   margin-top: 2rem;
-  border-top: 1px solid #ddd;
-  font-size: 0.9rem;
-  text-align: center;
 `;
 
 const About: React.FC = () => (
+  <>
   <AboutContainer>
     <Title>Quem Somos</Title>
     <AboutImage />
     <Paragraph>
-      Na Pão te Kero, acreditamos que o pão é mais do que alimento – é uma forma de conectar pessoas, compartilhar histórias
-      e fazer a diferença. Desde nossa fundação, temos o compromisso de trazer qualidade, sustentabilidade e ações sociais
-      para nossa comunidade.
+      Na <strong>Pão te Kero</strong>, acreditamos que o pão é mais do que alimento – é uma forma de conectar pessoas,
+      compartilhar histórias e transformar vidas. Desde nossa fundação, nosso compromisso tem sido trazer qualidade,
+      sustentabilidade e impacto social positivo à nossa comunidade.
     </Paragraph>
 
     <Section>
       <Subtitle>Nossas Missões</Subtitle>
-      <List>
-        <li>Promover aprendizado através de oficinas de panificação.</li>
-        <li>Reduzir desperdícios com iniciativas sustentáveis.</li>
-        <li>Garantir acesso a alimentos para todos na comunidade.</li>
-      </List>
+      <CardGrid>
+        <Card
+          title="Oficinas de Panificação"
+          text="Promovemos aprendizado através de oficinas práticas que ensinam desde a seleção dos ingredientes até a finalização dos produtos."
+          image={workshop}
+        />
+        <Card
+          title="Sustentabilidade"
+          text="Adotamos práticas responsáveis para reduzir o impacto ambiental e criar um futuro mais verde para nossa comunidade."
+          image={recycling}
+        />
+        <Card
+          title="Alimentos para Todos"
+          text="Garantimos que ninguém fique sem acesso a alimentos de qualidade, por meio de iniciativas de doação e combate ao desperdício."
+          image={woman}
+        />
+      </CardGrid>
     </Section>
-    <Footer>
-      <p>
-        <strong>Pão te Kero</strong> - Rua dos Poderes, 221 - Centro, RJ
-      </p>
-      <p>Telefone: (21) 99765-6340 | E-mail: padariapaotekero@gmail.com</p>
-    </Footer>
   </AboutContainer>
+  <Footer />
+  </>
 );
 
 export default About;

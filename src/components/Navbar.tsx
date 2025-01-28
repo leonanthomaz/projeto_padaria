@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi'; // Ícones do react-icons
-import logoTransparent from '@/assets/imgs/logo-padaria-trans.png';
+import { FiMenu, FiX } from 'react-icons/fi'; 
 
 const NavbarContainer = styled.nav`
   background-color: rgba(55, 55, 55, 0.8);
   color: #fff;
-  padding: 1rem 1.2rem;
+  padding: 1.5rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,20 +26,20 @@ const LogoContainer = styled.div`
   
 `;
 
-const Logo = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  overflow: hidden;
+// const Logo = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 60px;
+//   height: 60px;
+//   overflow: hidden;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-`;
+//   img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: contain;
+//   }
+// `;
 
 const Title = styled.span`
   font-size: 1.5rem;
@@ -57,7 +56,6 @@ const MenuToggle = styled.div`
 
   @media (max-width: 768px) {
     display: block;
-    margin-top: 5px;
   }
 `;
 
@@ -69,7 +67,7 @@ const NavLinks = styled.div<{ isOpen: boolean }>`
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 94px;
+    top: 74px;
     right: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
     height: 100vh;
     width: 250px;
@@ -86,6 +84,10 @@ const NavLink = styled(Link)<{ isActive: boolean }>`
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
 
   &:hover {
     color: #ffcc00;
@@ -108,9 +110,9 @@ const Navbar: React.FC = () => {
   return (
     <NavbarContainer>
       <LogoContainer>
-        <Logo>
+        {/* <Logo>
           <img src={logoTransparent} alt="Logo da Padaria" />
-        </Logo>
+        </Logo> */}
         <Title>Pão te Kero</Title>
       </LogoContainer>
       <MenuToggle onClick={toggleMenu}>

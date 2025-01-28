@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Footer from '../components/Footer'; // Importando o Footer separado
 
 const ContactContainer = styled.div`
   padding: 2rem;
-  max-width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
-  margin-top: 85px;
-
+  font-family: Arial, sans-serif;
+  margin-top: 70px;
 `;
 
 const Title = styled.h1`
   font-size: 2.5rem;
   color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 1.5rem;
 `;
 
 const Input = styled.input`
@@ -26,6 +31,7 @@ const Input = styled.input`
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 5px;
+  width: 100%;
 `;
 
 const Textarea = styled.textarea`
@@ -35,20 +41,30 @@ const Textarea = styled.textarea`
   border-radius: 5px;
   resize: vertical;
   min-height: 150px;
+  width: 100%;
 `;
 
 const Button = styled.button`
   padding: 1rem;
   background-color: #ffcc00;
-  color: #fff;
+  color: #343434;
   border: none;
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+  width: 100%;
 
   &:hover {
-    background-color: #e6b800;
+    background-color: #ffcc00;
   }
+`;
+
+const Paragraph = styled.p`
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: center;
+  margin-top: 1rem;
 `;
 
 const Contact: React.FC = () => {
@@ -64,19 +80,23 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Formulário enviado!');
+    alert('Formulário enviado com sucesso! Entraremos em contato em breve.');
   };
 
   return (
+    <>
     <ContactContainer>
-      <Title>Contato</Title>
+      <Title>Entre em Contato</Title>
+      <Paragraph>
+        Ficaremos felizes em ouvir você! Preencha o formulário abaixo e responderemos o mais rápido possível.
+      </Paragraph>
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="Nome"
+          placeholder="Seu Nome"
           required
         />
         <Input
@@ -84,19 +104,21 @@ const Contact: React.FC = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="E-mail"
+          placeholder="Seu E-mail"
           required
         />
         <Textarea
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Sua mensagem"
+          placeholder="Sua Mensagem"
           required
         />
         <Button type="submit">Enviar</Button>
       </Form>
     </ContactContainer>
+    <Footer />
+    </>
   );
 };
 

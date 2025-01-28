@@ -2,19 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Header from '../components/HeaderComponent'; // Importando o Header ajustado
+import Header from '../components/HeaderComponent';
+import Footer from '../components/Footer';
 import Card from '../components/Card';
-import carouselImg1 from '@/assets/imgs/pao-acucar.jpg';
-import carouselImg2 from '@/assets/imgs/pao-assado.jpg';
-import carouselImg3 from '@/assets/imgs/torta.jpg';
-import homemPao from '@/assets/imgs/homem-pao.png';
-import quadroIdeia from '@/assets/imgs/quadro-ideia.png';
-import latasLixoReciclaveis from '@/assets/imgs/trash.png';
+import paoDeAçucar from '@/assets/imgs/pao-de-acucar.jpg';
+import paoAssado from '@/assets/imgs/pao-assado.jpg';
+import tortaEspecial from '@/assets/imgs/torta-especial.jpg';
+import oficinaIdeias from '@/assets/imgs/oficina-ideias.png';
+import brinquedoReciclavel from '@/assets/imgs/brinquedo-reciclavel.png';
+import ajudaColetiva from '@/assets/imgs/ajuda-coletiva.png';
+import parallaxImage from '@/assets/imgs/parallax-pao.jpg'; // Imagem para o parallax
 
 const PageContainer = styled.div`
   font-family: Arial, sans-serif;
   color: #333;
-  margin-top: 85px;
+  padding: 2rem;
 `;
 
 const Section = styled.section`
@@ -48,19 +50,75 @@ const CardGrid = styled.div`
   margin-top: 2rem;
 `;
 
-const Footer = styled.footer`
-  background-color: #f8f9fa;
-  padding: 1.5rem 0;
-  margin-top: 2rem;
-  border-top: 1px solid #ddd;
-  font-size: 0.9rem;
+const ParallaxSection = styled.div`
+  position: relative;
+  background-image: url(${parallaxImage});
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ParallaxOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Escurece a imagem */
+`;
+
+const ParallaxText = styled.h2`
+  position: relative;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  font-size: 2rem;
+  text-align: center;
+  padding: 0 1rem;
+`;
+
+const FinalSection = styled.div`
+  background-color: #f8f8f8;
+  padding: 3rem 1rem;
   text-align: center;
 `;
 
-const Home: React.FC = () => (
-  <PageContainer>
-    <Header />
+const FinalTitle = styled.h2`
+  font-size: 2.5rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+`;
 
+const FinalParagraph = styled.p`
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+`;
+
+const CallToActionButton = styled.a`
+  display: inline-block;
+  background-color: #ff7043;
+  color: white;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e64a19;
+  }
+`;
+
+const Home: React.FC = () => (
+  <>
+  <Header />
+  <PageContainer>
     <Section>
       <Title>Descubra uma nova experiência</Title>
       <Paragraph>
@@ -73,13 +131,13 @@ const Home: React.FC = () => (
     <CarouselWrapper>
       <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
         <div>
-          <img src={carouselImg1} alt="Pães deliciosos" />
+          <img src={paoDeAçucar} alt="Pães deliciosos" />
         </div>
         <div>
-          <img src={carouselImg2} alt="Oficinas de panificação" />
+          <img src={paoAssado} alt="Oficinas de panificação" />
         </div>
         <div>
-          <img src={carouselImg3} alt="Produtos frescos todos os dias" />
+          <img src={tortaEspecial} alt="Produtos frescos todos os dias" />
         </div>
       </Carousel>
     </CarouselWrapper>
@@ -88,30 +146,41 @@ const Home: React.FC = () => (
       <Title>Nossas Iniciativas</Title>
       <CardGrid>
         <Card
-          title="Oficinas de Panificação"
-          text="Aprenda os segredos do pão artesanal com nossos especialistas em aulas práticas."
-          image={homemPao}
+          title="Oficinas de Educação"
+          text="Compartilhamos conhecimentos sobre panificação. Participe de aulas práticas e aprenda desde a escolha dos ingredientes até o pão sair do forno."
+          image={oficinaIdeias}
         />
         <Card
-          title="Sustentabilidade"
-          text="Reduzimos resíduos e transformamos materiais recicláveis em novos propósitos."
-          image={quadroIdeia}
+          title="Brinquedos com Materiais Recicláveis"
+          text="Transformamos resíduos recicláveis em brinquedos que incentivam a criatividade e promovem a consciência ambiental."
+          image={brinquedoReciclavel}
         />
         <Card
-          title="Alimentos para Todos"
-          text="Contribuímos para a comunidade com doações de alimentos próximos da validade."
-          image={latasLixoReciclaveis}
+          title="Pegue e Leve"
+          text="Itens próximos da validade são oferecidos gratuitamente para ajudar a reduzir o desperdício e apoiar quem mais precisa."
+          image={ajudaColetiva}
         />
       </CardGrid>
     </Section>
 
-    <Footer>
-      <p>
-        <strong>Pão te Kero</strong> - Rua dos Poderes, 221 - Centro, RJ
-      </p>
-      <p>Telefone: (21) 99765-6340 | E-mail: padariapaotekero@gmail.com</p>
-    </Footer>
+    <ParallaxSection>
+      <ParallaxOverlay />
+      <ParallaxText>
+        "Pães feitos com amor, cuidado e dedicação. Venha experimentar o sabor da tradição."
+      </ParallaxText>
+    </ParallaxSection>
+
+    <FinalSection>
+      <FinalTitle>Venha nos conhecer!</FinalTitle>
+      <FinalParagraph>
+        Estamos ansiosos para receber você em nossa padaria. Seja para experimentar nossos produtos deliciosos ou
+        participar de uma de nossas iniciativas, estamos aqui para fazer a diferença. 
+      </FinalParagraph>
+      <CallToActionButton href="#contato">Entre em contato</CallToActionButton>
+    </FinalSection>
   </PageContainer>
+  <Footer />
+  </>
 );
 
 export default Home;

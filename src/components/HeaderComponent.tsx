@@ -5,7 +5,7 @@ import logo from '@/assets/imgs/logo-padaria.jpg';
 const HeaderStyled = styled.header`
   position: relative;
   background: url(${img1}) center/cover no-repeat;
-  height: 300px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +13,10 @@ const HeaderStyled = styled.header`
   color: #fff;
   overflow: hidden;
   z-index: 1;
+
+  /* @media (max-width: 768px) {
+    height: 85vh;
+  } */
 `;
 
 const Overlay = styled.div`
@@ -31,12 +35,17 @@ const Logo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%; /* Formato circular */
   overflow: hidden;
   background-color: #fff;
   margin-bottom: 1rem; /* Espaço entre a logo e o texto */
+
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
 
   img {
     width: 100%;
